@@ -23,14 +23,18 @@ RPM packages are available in the [openSUSE:Tools](http://download.opensuse.org/
     zypper addrepo --repo http://download.opensuse.org/repositories/OBS:/Server:/Unstable/openSUSE_Factory/OBS:Server:Unstable.repo
     zypper install osc
 
+### Install by python
 To install from git, do
 
     ./setup.py build
     ./setup.py install
 
+    # Windows Git bash
+    python setup.py bdist_wheel
+    python -m pip install dist/osc*.whl
+
 Alternatively, you can directly use `./osc-wrapper.py` from the source directory,
 which is easier if you develop on osc.
-
 
 ## Configuration
 
