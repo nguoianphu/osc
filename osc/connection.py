@@ -1,5 +1,6 @@
 import base64
-import fcntl
+# import fcntl
+import portalocker
 import inspect
 import os
 import re
@@ -516,12 +517,14 @@ class CookieJarAuthHandler(AuthHandlerBase):
             except FileExistsError:
                 pass
             self.cookiejar_lock_fd = open(self.cookiejar_lock_path, "w")
-            fcntl.flock(self.cookiejar_lock_fd, fcntl.LOCK_EX)
+            # fcntl.flock(self.cookiejar_lock_fd, fcntl.LOCK_EX)
+            portalocke.lock(self.cookiejar_lock_fd, portalocke.LOCK_EX)
 
     def _unlock(self):
         if self.cookiejar_lock_path:
             self.cookiejar_lock_path = None
-            fcntl.flock(self.cookiejar_lock_fd, fcntl.LOCK_UN)
+            # fcntl.flock(self.cookiejar_lock_fd, fcntl.LOCK_UN)
+            portalocke.lock(self.cookiejar_lock_fd, portalocke.LOCK_UN)
             self.cookiejar_lock_fd.close()
 
     def set_request_headers(self, url, request_headers):
