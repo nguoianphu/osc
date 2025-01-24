@@ -30,6 +30,7 @@ To install from git, do
     ./setup.py install
 
     # Windows Git bash
+    python setup.py build
     python setup.py bdist_wheel
     python -m pip install dist/osc*.whl
 
@@ -40,6 +41,16 @@ which is easier if you develop on osc.
 
 When you use osc for the first time, it will ask you for your username and
 password, and store it in `~/.config/osc/oscrc`.
+
+Example `~/.config/osc/oscrc`
+
+    [general]
+    apiurl = https://YOUR-OBS-URL.com
+    
+    [https://YOUR-OBS-URL.com]
+    user = YOUR_USER
+    pass = YOUR_PASSWORD
+    sslcertck = 0
 
 
 ## Keyrings
